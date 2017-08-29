@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Craigslistjr</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <%= link_to 'home', categories_path %>
+  <% if session[:id] != nil %>
+    <%= link_to 'logout', logout_path, method: :delete %>
+    <%= User.find_by(id: session[:id]).name  %>
+    <% else %>
+    <%= link_to 'login', login_path %>
+    <%= link_to 'register', new_user_path %>
+  <% end  %>
+      <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<h2> <%= @article.title %> </h2>
+
+Content: <%= @article.description %>
+Price: <%= @article.price %>
+<!-- Come back to add the publisher of article (aka user) -->
+
+<% if session[:id] == @article.user.id %>
+  <%= link_to 'edit', edit_category_article_path(@article) %>
+  <%= link_to 'delete', [@article.category, @article], method: :delete, data: { confirm: 'Are you sure you want to delete this article?'} %>
+<% end %>

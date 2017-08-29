@@ -1,0 +1,17 @@
+<h2> Create a new article </h2>
+
+<% if @article.errors.any? %>
+  <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for([@category, @article]) do |f| %>
+<!-- We can also have an hidden field with the category_id -->
+  Title: <%= f.text_field :title %>
+  Description: <%= f.text_field :description %>
+  Price: <%= f.text_field :price %>
+  <%= f.submit %>
+<% end %>

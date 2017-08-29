@@ -1,0 +1,10 @@
+<h2> <%= @category.name %> </h2>
+  <% if session[:id] != nil %>
+  <%= link_to 'Create new article', new_article_path %>
+  <% end %>
+
+<ul>
+<% @category.articles.each do |article| %>
+  <li> <%= link_to article.title, category_article_path(@category, article) %> </li>
+<% end %>
+</ul>
